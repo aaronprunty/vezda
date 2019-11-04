@@ -72,7 +72,7 @@ Easily navigate through your data volumes using the &leftarrow;, &uparrow;, &rig
   <img src="images/data.png" width="850">
 </p>
  
-and simulated test functions:
+and simulated impulse responses:
 
 <p align="center">
   <img src="images/impulse_response.png" width="850">
