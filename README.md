@@ -75,7 +75,7 @@ Easily navigate through your data volumes using the &leftarrow;, &uparrow;, &rig
 and simulated test functions:
 
 <p align="center">
-  <img src="images/testFunc.png" width="850">
+  <img src="images/impulse_response.png" width="850">
 </p>
 
 Customize images to show the information what you want:
