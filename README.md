@@ -12,7 +12,7 @@ Vezda relies on the following sources of input data:
 * Receiver locations
 * Recording times
 * Measured scattered wave data
-* Simulated test functions<sup>1</sup>
+* Simulated impulse responses<sup>1</sup>
 * Object/scatterer boundary (optional)
 
 See the user manual located under the **vezda/docs/** directory for more information on the required data format. 
