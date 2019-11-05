@@ -67,7 +67,7 @@ The **vezda/examples/starfish-tutorial/** folder provides an introductory tutori
 ## Elegant Data Visualization
 Vezda is designed from the ground up to make data visualization and imaging with the linear sampling method as simple and as elegant as possible. This is achieved by minimizing the complexity of the user interface and maximizing the flexibility and customization of the software to different imaging applications.
 
-### Interactive Plotting:
+### Interactive Plotting
 Easily navigate through your data volumes using the &leftarrow;, &uparrow;, &rightarrow;, &downarrow;  arrow keys along with maps to visualize both your measured scattered wave data:
 
 <p align="center">
@@ -80,14 +80,7 @@ and simulated impulse responses:
   <img src="images/impulse_response.png" width="850">
 </p>
 
-Customize images to show the information what you want:
-```
-$ vzimage --show_scatterer=no --show_receivers=no --colorbar=yes
-```
-<p align="center">
-  <img src="your_relative_path_here" width="350" title="hover text">
-  <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
-</p>
+Display images using perceptually uniform colormaps:
 
 <p align="center">
   <img src="images/star_viridis.png" width="200" title="viridis" alt="text2">
@@ -97,7 +90,7 @@ $ vzimage --show_scatterer=no --show_receivers=no --colorbar=yes
   <img src="images/star_cividis.png" width="200" title="cividis" alt="text2">
 </p>
 
-### Dark Mode:
+### Dark Mode
 
 Easily take a given data set and visualize how the image would change by altering the acquisition setup:
 
