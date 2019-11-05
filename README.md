@@ -64,10 +64,10 @@ Included in the Vezda software package are fully working examples applied to var
 
 The **vezda/examples/starfish-tutorial/** folder provides an introductory tutorial for using the Vezda software package to reconstruct a starfish-shaped scatterer. If you are new to using Vezda, start with the starfish tutorial and then move on to other examples, which in general will be less explanatory and more cookbook or recipe oriented.
 
-## A simple and flexible interface
+## Elegant Data Visualization
 Vezda is designed from the ground up to make data visualization and imaging with the linear sampling method as simple and as elegant as possible. This is achieved by minimizing the complexity of the user interface and maximizing the flexibility and customization of the software to different imaging applications.
 
-#### Intuitive Plotting:
+#### Interactive Plotting:
 Easily navigate through your data volumes using the &leftarrow;, &uparrow;, &rightarrow;, &downarrow;  arrow keys along with maps to visualize both your measured scattered wave data:
 
 <p align="center">
@@ -85,15 +85,19 @@ Customize images to show the information what you want:
 $ vzimage --show_scatterer=no --show_receivers=no --colorbar=yes
 ```
 <p align="center">
-  <img src="images/star_viridis.png" width="50"> <img src="images/star_plasma.png" width="50"> <img src="images/star_inferno.png" width="50"> <img src="images/star_magma.png" width="50"> <img src="images/star_cividis.png" width="50">
+  <img src="images/star_viridis.png" width="200"><br><em>viridis</em>
+  <img src="images/star_plasma.png" width="200"><br><em>plasma</em>
+  <img src="images/star_inferno.png" width="200"><br><em>inferno</em>
+  <img src="images/star_magma.png" width="200"><br><em>magma</em>
+  <img src="images/star_cividis.png" width="200"><br><em>cividis</em>
 </p>
 
-#### Explore different imaging scenarios:
+#### Dark Mode:
 
 Easily take a given data set and visualize how the image would change by altering the acquisition setup:
 
 <p align="center">
-  <img src="images/singVals.png" width="434"> <img src="images/starfish3.png" width="434">
+  <img src="images/spectra_light.png" width="434"> <img src="images/spectra_dark.png" width="434">
 </p>
 
 ## Contributing
