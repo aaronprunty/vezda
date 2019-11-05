@@ -1,0 +1,13 @@
+[console_scripts]
+vezda = vezda.home:cli
+vzdata = vezda.setDataPath:cli
+vzgrid = vezda.setSearchGrid:cli
+vzimage = vezda.plotImage:cli
+vznoise = vezda.addNoise:cli
+vzpicard = vezda.Picard:cli
+vzsolve = vezda.Solve:cli
+vzspectra = vezda.plotSpectra:cli
+vzsvd = vezda.plotSVD:cli
+vzwiggles = vezda.plotWiggles:cli
+vzwindow = vezda.setWindow:cli
+
