@@ -85,7 +85,7 @@ Customize images to show the information what you want:
 $ vzimage --show_scatterer=no --show_receivers=no --colorbar=yes
 ```
 <p align="center">
-  <img src="images/starfish1.png" width="342.7"> <img src="images/starfish2.png" width="434">
+  <img src="images/star_viridis.png" width="50"> <img src="images/star_plasma.png" width="50"> <img src="images/star_inferno.png" width="50"> <img src="images/star_magma.png" width="50"> <img src="images/star_cividis.png" width="50">
 </p>
 
 #### Explore different imaging scenarios:
