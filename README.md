@@ -11,7 +11,7 @@ Vezda relies on the following sources of input data:
 * Receiver locations
 * Recording times
 * Recorded data
-* Simulated impulse responses<sup>1</sup>
+* Simulated impulse responses from the search grid<sup>1</sup>
 
 The following data are optional:
 * Source locations
@@ -19,7 +19,7 @@ The following data are optional:
 
 See the user manual located under the **vezda/docs/** directory for more information on the required data format. 
 
-<sup>1</sup> For imaging objects within heterogeneous host materials, you will need to supply the simulated impulse responses. For imaging objects within homogeneous host materials, Vezda can simulate the impulse responses for you, so long as you provide a **pulseFun.py** file. See the user manual for more information.
+<sup>1</sup> For imaging objects within heterogeneous host materials, you will need to supply the simulated impulse responses of the host material from the search grid. For imaging objects within homogeneous host materials, Vezda can simulate the impulse responses of the host material for you, so long as you provide a **pulseFun.py** file. See the user manual for more information.
 
 ### Software Prerequisites
 Vezda requires Python 3. If you only have Python <= 2.7 on your system, you will need to obtain a Python 3 installation to run the Vezda software. Fortunately, there are several options freely available to you which make satisfying this prerequisite simple. I personally recommend using the [Anaconda](https://www.anaconda.com/distribution/) distribution if you do not already have a Python 3 installation set up. It is perhaps the easiest and quickest way to get a working Python installation up and running with all the scientific and numeric libraries included. As Python is cross-platform, you can download an installation for Windows, macOS, and Linux.
