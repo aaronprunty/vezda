@@ -1,7 +1,7 @@
 <img src="images/vezdaLogo.png" width="120">
 
 # Vezda
-Vezda, simplified from the Russian звезда (zvezda) meaning *star*, is an open-source software package written in the Python programming language for target-oriented imaging. In many areas of application, such as medical imaging, subsurface monitoring, or noninvasive testing, one wants to locate an object which is embedded within a host material and inaccessible to direct observation. By interrogating the host material with a wave, one can noninvasively obtain measurements of the hidden object by recording the waves that scatter off it. Vezda implements modern techniques from inverse scattering theory to estimate the shape and location of the hidden object.
+Vezda, simplified from the Russian звезда (zvezda) meaning *star*, is an open-source software package written in the Python programming language for target-oriented imaging. In many areas of application, such as medical imaging, subsurface monitoring, or noninvasive testing, one wants to locate an object which is embedded within a host material and inaccessible to direct observation. By interrogating the host material with a wave, one can noninvasively obtain measurements of the concealed object by recording the waves that scatter off it. Vezda implements modern techniques from inverse scattering theory to estimate the shape and location of the concealed object.
 
 ## Getting Started
 Before you can begin using Vezda, you need to make sure you have the required software and data pertaining to your imaging experiment.
