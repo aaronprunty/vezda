@@ -95,7 +95,7 @@ Display images using perceptually uniform colormaps:
 Easily take a given data set and visualize how the image would change by altering the acquisition setup:
 
 <p align="center">
-  <img src="images/spectra_light.png" width="434"> <img src="images/spectra_dark.png" width="434">
+  <img src="images/spectra_light.png" width="433"> <img src="images/spectra_dark.png" width="433">
 </p>
 
 ## Contributing
