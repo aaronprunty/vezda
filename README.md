@@ -11,7 +11,7 @@ Vezda relies on the following sources of input data:
 * Receiver locations
 * Recording times
 * Recorded data
-* Simulated impulse responses from the search grid<sup>1</sup>
+* Simulated impulse responses of the host material<sup>1</sup>
 
 The following data are optional:
 * Source locations
