@@ -85,11 +85,16 @@ Customize images to show the information what you want:
 $ vzimage --show_scatterer=no --show_receivers=no --colorbar=yes
 ```
 <p align="center">
-  <img src="images/star_viridis.png" width="200"><br><em>viridis</em>
-  <img src="images/star_plasma.png" width="200"><br><em>plasma</em>
-  <img src="images/star_inferno.png" width="200"><br><em>inferno</em>
-  <img src="images/star_magma.png" width="200"><br><em>magma</em>
-  <img src="images/star_cividis.png" width="200"><br><em>cividis</em>
+  <img src="your_relative_path_here" width="350" title="hover text">
+  <img src="your_relative_path_here_number_2_large_name" width="350" alt="accessibility text">
+</p>
+
+<p align="center">
+  <img src="images/star_viridis.png" width="200" title="viridis" alt="text2">
+  <img src="images/star_plasma.png" width="200" title="plasma" alt="text2">
+  <img src="images/star_inferno.png" width="200" title="inferno" alt="text2">
+  <img src="images/star_magma.png" width="200" title="magma" alt="text2">
+  <img src="images/star_cividis.png" width="200" title="cividis" alt="text2">
 </p>
 
 ### Dark Mode:
