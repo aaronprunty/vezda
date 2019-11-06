@@ -92,7 +92,7 @@ Display images using perceptually uniform colormaps, ranging from *viridis*, *pl
 
 ### Dark Mode
 
-Easily take a given data set and visualize how the image would change by altering the acquisition setup:
+Take your workflow into the night with dark mode, where visualization settings are optimized for low-light environments.
 
 <p align="center">
   <img src="images/spectra_light.png" width="430"> <img src="images/spectra_dark.png" width="430">
