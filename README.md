@@ -102,7 +102,7 @@ Easily take a given data set and visualize how the image would change by alterin
 ## Parallel Computing
 Vezda supports shared-memory parallelization. Additional support for distributed-memory parallelization will be added in the near future.
 
-Simply specify the number of processors (cores) as an optional argument for the Vezda vzsolve command
+Simply specify the number of processors (cores) using the ```--nproc``` argument for the Vezda ```vzsolve``` command. For example:
 
 ```
 $ vzsolve --nproc=8
