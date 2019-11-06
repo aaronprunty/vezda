@@ -80,6 +80,7 @@ and simulated impulse responses:
   <img src="images/impulse_response.png" width="850">
 </p>
 
+### Customization
 Display images using perceptually uniform colormaps, ranging from *viridis*, *plasma*, *inferno*, *magma*, and *cividis*:
 
 <p align="center">
