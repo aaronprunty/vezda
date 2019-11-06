@@ -83,11 +83,11 @@ and simulated impulse responses:
 Display images using perceptually uniform colormaps, ranging from *viridis*, *plasma*, *inferno*, *magma*, and *cividis*:
 
 <p align="center">
-  <img src="images/star_viridis.png" width="288" title="viridis" alt="text2"/>
-  <img src="images/star_plasma.png" width="288" title="plasma" alt="text2"/>
-  <img src="images/star_inferno.png" width="288" title="inferno" alt="text2"/>
-  <img src="images/star_magma.png" width="288" title="magma" alt="text2"/>
-  <img src="images/star_cividis.png" width="288" title="cividis" alt="text2"/>
+  <img src="images/star_viridis.png" width="287" title="viridis" alt="text2"/>
+  <img src="images/star_plasma.png" width="287" title="plasma" alt="text2"/>
+  <img src="images/star_inferno.png" width="287" title="inferno" alt="text2"/>
+  <img src="images/star_magma.png" width="287" title="magma" alt="text2"/>
+  <img src="images/star_cividis.png" width="287" title="cividis" alt="text2"/>
 </p>
 
 ### Dark Mode
@@ -101,6 +101,12 @@ Easily take a given data set and visualize how the image would change by alterin
 
 ## Parallel Computing
 Vezda supports shared-memory parallelization. Additional support for distributed-memory parallelization will be added in the near future.
+
+Simply specify the number of processors (cores) as an optional argument for the Vezda vzsolve command
+
+```
+$ vzsolve --nproc=8
+```
 
 ## Contributing
 
