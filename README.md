@@ -64,7 +64,7 @@ Included in the Vezda software package are fully working examples applied to var
 
 The **vezda/examples/starfish-tutorial/** folder provides an introductory tutorial for using the Vezda software package to reconstruct a starfish-shaped scatterer. If you are new to using Vezda, start with the starfish tutorial and then move on to other examples, which in general will be less explanatory and more cookbook or recipe oriented.
 
-## Elegant Data Visualization
+## Data Visualization
 Vezda is designed from the ground up to make data visualization and imaging as simple and as elegant as possible. This is achieved by minimizing the complexity of the user interface and maximizing the flexibility and customization of the software to different imaging applications.
 
 ### Interactive Plotting
