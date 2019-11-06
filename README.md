@@ -83,11 +83,11 @@ and simulated impulse responses:
 Display images using perceptually uniform colormaps:
 
 <p align="center">
-  <img src="images/star_viridis.png" width="275" title="viridis" alt="text2">
-  <img src="images/star_plasma.png" width="275" title="plasma" alt="text2">
-  <img src="images/star_inferno.png" width="275" title="inferno" alt="text2">
-  <img src="images/star_magma.png" width="275" title="magma" alt="text2">
-  <img src="images/star_cividis.png" width="275" title="cividis" alt="text2">
+  <img src="images/star_viridis.png" width="285" title="viridis" alt="text2"/>
+  <img src="images/star_plasma.png" width="285" title="plasma" alt="text2"/>
+  <img src="images/star_inferno.png" width="285" title="inferno" alt="text2"/>
+  <img src="images/star_magma.png" width="285" title="magma" alt="text2"/>
+  <img src="images/star_cividis.png" width="285" title="cividis" alt="text2"/>
 </p>
 
 ### Dark Mode
