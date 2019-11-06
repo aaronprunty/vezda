@@ -83,11 +83,11 @@ and simulated impulse responses:
 Display images using perceptually uniform colormaps:
 
 <p align="center">
-  <img src="images/star_viridis.png" width="300" title="viridis" alt="text2">
-  <img src="images/star_plasma.png" width="300" title="plasma" alt="text2">
-  <img src="images/star_inferno.png" width="300" title="inferno" alt="text2">
-  <img src="images/star_magma.png" width="300" title="magma" alt="text2">
-  <img src="images/star_cividis.png" width="300" title="cividis" alt="text2">
+  <img src="images/star_viridis.png" width="275" title="viridis" alt="text2">
+  <img src="images/star_plasma.png" width="275" title="plasma" alt="text2">
+  <img src="images/star_inferno.png" width="275" title="inferno" alt="text2">
+  <img src="images/star_magma.png" width="275" title="magma" alt="text2">
+  <img src="images/star_cividis.png" width="275" title="cividis" alt="text2">
 </p>
 
 ### Dark Mode
@@ -95,7 +95,7 @@ Display images using perceptually uniform colormaps:
 Easily take a given data set and visualize how the image would change by altering the acquisition setup:
 
 <p align="center">
-  <img src="images/spectra_light.png" width="430"> <img src="images/spectra_dark.png" width="430">
+  <img src="images/spectra_light.png" width="431"> <img src="images/spectra_dark.png" width="431">
 </p>
 
 ## Parallel Computing
