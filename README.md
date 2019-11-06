@@ -25,7 +25,7 @@ See the user manual located under the **vezda/docs/** directory for more informa
 Vezda requires Python 3. If you only have Python <= 2.7 on your system, you will need to obtain a Python 3 installation to run the Vezda software. Fortunately, there are several options freely available to you which make satisfying this prerequisite simple. I personally recommend using the [Anaconda](https://www.anaconda.com/distribution/) distribution if you do not already have a Python 3 installation set up. It is perhaps the easiest and quickest way to get a working Python installation up and running with all the scientific and numeric libraries included. As Python is cross-platform, you can download an installation for Windows, macOS, and Linux.
 
 ### Installing Vezda
-Installing Vezda is simple. It is contained entirely in a binary Python wheel found in the Python Packaging Index [PyPI](https://pypi.python.org/pypi/vezda/).
+Installing Vezda is simple. It is contained entirely in a binary Python wheel found in the Python Package Index [PyPI](https://pypi.python.org/pypi/vezda/).
 
 #### Option 1: Install from Python wheel
 Python wheels provide a faster and more efficient method to install software packages than traditional installs from source files. Additionally, they provide more consistent installations across operating systems and machines.
@@ -65,10 +65,10 @@ Included in the Vezda software package are fully working examples applied to var
 The **vezda/examples/starfish-tutorial/** folder provides an introductory tutorial for using the Vezda software package to reconstruct a starfish-shaped scatterer. If you are new to using Vezda, start with the starfish tutorial and then move on to other examples, which in general will be less explanatory and more cookbook or recipe oriented.
 
 ## Elegant Data Visualization
-Vezda is designed from the ground up to make data visualization and imaging with the linear sampling method as simple and as elegant as possible. This is achieved by minimizing the complexity of the user interface and maximizing the flexibility and customization of the software to different imaging applications.
+Vezda is designed from the ground up to make data visualization and imaging as simple and as elegant as possible. This is achieved by minimizing the complexity of the user interface and maximizing the flexibility and customization of the software to different imaging applications.
 
 ### Interactive Plotting
-Easily navigate through your data volumes using the &leftarrow;, &uparrow;, &rightarrow;, &downarrow;  arrow keys along with maps to visualize both your measured scattered wave data:
+Easily navigate through your data volumes using the &leftarrow;, &uparrow;, &rightarrow;, &downarrow;  arrow keys along with maps to visualize both your measured data:
 
 <p align="center">
   <img src="images/data.png" width="850">
@@ -83,11 +83,11 @@ and simulated impulse responses:
 Display images using perceptually uniform colormaps:
 
 <p align="center">
-  <img src="images/star_viridis.png" width="200" title="viridis" alt="text2">
-  <img src="images/star_plasma.png" width="200" title="plasma" alt="text2">
-  <img src="images/star_inferno.png" width="200" title="inferno" alt="text2">
-  <img src="images/star_magma.png" width="200" title="magma" alt="text2">
-  <img src="images/star_cividis.png" width="200" title="cividis" alt="text2">
+  <img src="images/star_viridis.png" width="300" title="viridis" alt="text2">
+  <img src="images/star_plasma.png" width="300" title="plasma" alt="text2">
+  <img src="images/star_inferno.png" width="300" title="inferno" alt="text2">
+  <img src="images/star_magma.png" width="300" title="magma" alt="text2">
+  <img src="images/star_cividis.png" width="300" title="cividis" alt="text2">
 </p>
 
 ### Dark Mode
@@ -97,6 +97,9 @@ Easily take a given data set and visualize how the image would change by alterin
 <p align="center">
   <img src="images/spectra_light.png" width="430"> <img src="images/spectra_dark.png" width="430">
 </p>
+
+## Parallel Computing
+Vezda supports shared-memory parallelization. Additional support for distributed-memory parallelization will be added in the near future.
 
 ## Contributing
 
