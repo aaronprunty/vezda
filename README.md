@@ -96,6 +96,7 @@ Easily take a given data set and visualize how the image would change by alterin
 
 <p align="center">
   <img src="images/spectra_light.png" width="430"> <img src="images/spectra_dark.png" width="430">
+  <img src="images/wiggles_light.png" width="430"> <img src="images/wiggles_dark.png" width="430">
 </p>
 
 ## Parallel Computing
