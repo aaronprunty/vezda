@@ -46,6 +46,7 @@ Install location:
 
 /path/to/your/python/site-packages/vezda
 
+$
 ```
 
 #### Option 2: Install from source files
