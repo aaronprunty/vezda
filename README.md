@@ -37,7 +37,15 @@ $ pip install vezda
 By default, pip will install the Vezda software package under the **site-packages/** directory on your ```$PYTHONPATH```. To locate the root folder containing the Vezda source files, simply enter ```vezda``` at the command line:
 ```
 $ vezda
+
+Vezda, Version X.X.XX
+Copyright © 2017-2019 Aaron C. Prunty. All Rights Reserved.
+Distributed under the terms of the Apache License, Version 2.0.
+
+Install location:
+
 /path/to/your/python/site-packages/vezda
+
 ```
 
 #### Option 2: Install from source files
