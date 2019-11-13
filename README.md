@@ -34,9 +34,9 @@ To install Vezda from the Python wheel, simply enter:
 ```
 $ pip install vezda
 ```
-By default, pip will install the Vezda software package under the **site-packages/** directory on your ```$PYTHONPATH```. To locate the root folder containing the Vezda source files, simply enter the Vezda ```vzhome``` command:
+By default, pip will install the Vezda software package under the **site-packages/** directory on your ```$PYTHONPATH```. To locate the root folder containing the Vezda source files, simply enter ```vezda``` at the command line:
 ```
-$ vzhome
+$ vezda
 /path/to/your/python/site-packages/vezda
 ```
 
