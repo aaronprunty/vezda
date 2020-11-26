@@ -128,7 +128,7 @@ def cli():
             plotParams['zu'] = args.zu
         #==============================================================================    
         if args.colormap is not None:
-            plotParams['colormap'] = args.colormap
+            plotParams['image_colormap'] = args.colormap
         #==============================================================================
         if args.colorbar is not None:
             if args.colorbar == 'n' or args.colorbar == 'no' or args.colorbar == 'false':
@@ -230,7 +230,7 @@ def cli():
             plotParams['isolevel'] = args.isolevel
         
         if args.colormap is not None:
-            plotParams['colormap'] = args.colormap
+            plotParams['image_colormap'] = args.colormap
             
         if args.shading is not None:
             plotParams['shading'] = args.shading

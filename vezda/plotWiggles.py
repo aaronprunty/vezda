@@ -43,6 +43,8 @@ def cli():
                         help='Specify the time units (e.g., \'s\' or \'ms\').')
     parser.add_argument('--au', type=str,
                         help='Specify the amplitude units (e.g., \'m\' or \'mm\').')
+    parser.add_argument('--colormap', type=str, default=None, choices=['grays', 'seismic', 'native'],
+                        help='specify a colormap for wiggle plots. Default is \'grays\'.')
     parser.add_argument('--pclip', type=float,
                         help='''Specify the percentage (0-1) of the peak amplitude to display. This
                         parameter is used for pcolormesh plots only. Default is set to 1.''')
@@ -78,6 +80,9 @@ def cli():
         if args.au is not None:
             plotParams['au'] = args.au
             
+        if args.colormap is not None:
+            plotParams['wiggle_colormap'] = args.colormap
+            
         if args.pclip is not None:
             if args.pclip >= 0 and args.pclip <= 1:
                 plotParams['pclip'] = args.pclip
@@ -106,6 +111,9 @@ def cli():
         
         if args.au is not None:
             plotParams['au'] = args.au
+            
+        if args.colormap is not None:
+            plotParams['wiggle_colormap'] = args.colormap
         
         if args.title is not None:
             if args.data:

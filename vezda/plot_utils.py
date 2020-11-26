@@ -1,4 +1,4 @@
-# Copyright 2017-2019 Aaron C. Prunty
+# Copyright 2017-2020 Aaron C. Prunty
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -42,9 +42,36 @@ class FontColor:
 
 # General functions for plotting...
 
-customCmapL = matplotlib.colors.LinearSegmentedColormap.from_list('', ['cyan', 'whitesmoke', 'magenta'])
-customCmapD = matplotlib.colors.LinearSegmentedColormap.from_list('', ['cyan', 'black', 'magenta'])
+# custom Vezda colormaps for light/dark mode wiggle plots
+vz_cwm = matplotlib.colors.LinearSegmentedColormap.from_list('', ['cyan', 'whitesmoke', 'magenta'])
+vz_cbm = matplotlib.colors.LinearSegmentedColormap.from_list('', ['cyan', 'black', 'magenta'])
 
+def get_cmap_colors(cmap_string, mode='light', fills=False):
+    if cmap_string == 'native':
+        if fills == True:
+            return 'm', 'c'
+        
+        if mode == 'light':
+            return vz_cwm
+        else: # mode == 'dark'
+            return vz_cbm
+        
+    elif cmap_string == 'grays':
+        if fills == True:
+            if mode == 'light':
+                return 'black', 'None'
+            else:
+                return 'whitesmoke', 'None'
+        else:
+            return plt.get_cmap(cmap_string)
+        
+    elif cmap_string == 'seismic':
+        if fills == True:
+            return 'blue', 'red'
+        else:
+            return plt.get_cmap(cmap_string)
+    
+        
 def default_params():
     '''
     Sets the default ploting parameters used in both
@@ -66,7 +93,8 @@ def default_params():
     plotParams['xu'] = ''
     plotParams['yu'] = ''
     plotParams['zu'] = ''
-    plotParams['colormap'] = 'magma'
+    plotParams['image_colormap'] = 'magma'
+    plotParams['wiggle_colormap'] = 'grays'
     plotParams['colorbar'] = False
     plotParams['shading'] = 'flat'
     plotParams['vmin'] = 0.0
@@ -137,7 +165,7 @@ def setFigure(num_axes=1, mode='light', ax1_dim=2, ax2_dim=2):
             ax1.inactivesourcecolor = 'darkgray'
             ax1.scatterercolor = 'darkgray'
             ax1.surfacecolor = 'c'
-            ax1.customcmap = customCmapL
+            #ax1.wiggle_cmap = vz_cwm
         
         elif mode == 'dark':
             plt.rc('grid', linestyle='solid', color='dimgray')
@@ -167,7 +195,7 @@ def setFigure(num_axes=1, mode='light', ax1_dim=2, ax2_dim=2):
             ax1.inactivesourcecolor = 'dimgray'
             ax1.scatterercolor = 'lightgray'
             ax1.surfacecolor = 'c'
-            ax1.customcmap = customCmapD
+            #ax1.wiggle_cmap = vz_cbm
             
         return fig, ax1
             
@@ -204,7 +232,7 @@ def setFigure(num_axes=1, mode='light', ax1_dim=2, ax2_dim=2):
             ax1.inactivesourcecolor = 'darkgray'
             ax1.scatterercolor = 'darkgray'
             ax1.surfacecolor = 'c'
-            ax1.customcmap = customCmapL
+            #ax1.wiggle_cmap = vz_cwm
             
             ax2.spines['left'].set_color('black')
             ax2.spines['right'].set_color('black')
@@ -225,7 +253,7 @@ def setFigure(num_axes=1, mode='light', ax1_dim=2, ax2_dim=2):
             ax2.inactivesourcecolor = 'darkgray'
             ax2.scatterercolor = 'darkgray'
             ax2.surfacecolor = 'c'
-            ax2.customcmap = customCmapL
+            #ax2.wiggle_cmap = vz_cwm
             
         
         elif mode == 'dark':
@@ -256,7 +284,7 @@ def setFigure(num_axes=1, mode='light', ax1_dim=2, ax2_dim=2):
             ax1.inactivesourcecolor = 'dimgray'
             ax1.scatterercolor = 'lightgray'
             ax1.surfacecolor = 'c'
-            ax1.customcmap = customCmapD
+            #ax1.wiggle_cmap = vz_cbm
             
             ax2.tick_params(colors='555555')
             ax2.set_facecolor('525252')
@@ -279,7 +307,7 @@ def setFigure(num_axes=1, mode='light', ax1_dim=2, ax2_dim=2):
             ax2.inactivesourcecolor = 'dimgray'
             ax2.scatterercolor = 'lightgray'
             ax2.surfacecolor = 'c'
-            ax2.customcmap = customCmapD
+            #ax2.wiggle_cmap = vz_cbm
         
         return fig, ax1, ax2
 
@@ -474,6 +502,7 @@ def plotWiggles(ax, X, xvals, interval, coordinates, title, flag, plotParams):
             ax.set_yticklabels(interval)
             plt.setp(ax.get_yticklabels(), visible=True)
             plt.setp(ax.get_yticklines(), visible=True)
+            pos_fill, neg_fill = get_cmap_colors(plotParams['wiggle_colormap'], plotParams['view_mode'], fills=True)
             
             # rescale all wiggle traces by largest displacement range
             scaleFactor = np.max(np.ptp(X, axis=1))
@@ -483,11 +512,13 @@ def plotWiggles(ax, X, xvals, interval, coordinates, title, flag, plotParams):
             for n in range(N):
                 ax.plot(xvals, interval[n] + X[n, :], color=ax.linecolor, linewidth=ax.linewidth)
                 ax.fill_between(xvals, interval[n], interval[n] + X[n, :],
-                                where=(interval[n] + X[n, :] > interval[n]), color='m', alpha=ax.alpha)
+                                where=(interval[n] + X[n, :] > interval[n]), color=pos_fill, alpha=ax.alpha)
                 ax.fill_between(xvals, interval[n], interval[n] + X[n, :],
-                                where=(interval[n] + X[n, :] < interval[n]), color='c', alpha=ax.alpha)
+                                where=(interval[n] + X[n, :] < interval[n]), color=neg_fill, alpha=ax.alpha)
                 
         elif N > 18 and N <= 70:            
+            pos_fill, neg_fill = get_cmap_colors(plotParams['wiggle_colormap'], plotParams['view_mode'], fills=True)
+            
             # rescale all wiggle traces by largest displacement range
             scaleFactor = np.max(np.ptp(X, axis=1))
             if scaleFactor != 0:
@@ -496,20 +527,24 @@ def plotWiggles(ax, X, xvals, interval, coordinates, title, flag, plotParams):
             for n in range(N):
                 ax.plot(xvals, interval[n] + X[n, :], color=ax.linecolor, linewidth=ax.linewidth)
                 ax.fill_between(xvals, interval[n], interval[n] + X[n, :],
-                                where=(interval[n] + X[n, :] > interval[n]), color='m', alpha=ax.alpha)
+                                where=(interval[n] + X[n, :] > interval[n]), color=pos_fill, alpha=ax.alpha)
                 ax.fill_between(xvals, interval[n], interval[n] + X[n, :],
-                                where=(interval[n] + X[n, :] < interval[n]), color='c', alpha=ax.alpha)
+                                where=(interval[n] + X[n, :] < interval[n]), color=neg_fill, alpha=ax.alpha)
         
         else:
             scaleFactor = np.max(np.abs(X))   
             pclip = plotParams['pclip']
-            ax.pcolormesh(xvals, interval, X, vmin=-scaleFactor * pclip, vmax=scaleFactor * pclip, cmap=ax.customcmap)
+            wiggle_cmap = get_cmap_colors(plotParams['wiggle_colormap'], plotParams['view_mode'])
+            #wiggle_cmap = plt.get_cmap(plotParams['wiggle_colormap'])
+            ax.pcolormesh(xvals, interval, X, vmin=-scaleFactor * pclip, vmax=scaleFactor * pclip, cmap=wiggle_cmap)
                         
     else: # N == 1
+        pos_fill, neg_fill = get_cmap_colors(plotParams['wiggle_colormap'], plotParams['view_mode'],fills=True)
+        
         ax.yaxis.get_offset_text().set_x(-0.1)
         ax.plot(xvals, X[0, :], color=ax.linecolor, linewidth=ax.linewidth)
-        ax.fill_between(xvals, 0, X[0, :], where=(X[0, :] > 0), color='m', alpha=ax.alpha)
-        ax.fill_between(xvals, 0, X[0, :], where=(X[0, :] < 0), color='c', alpha=ax.alpha)
+        ax.fill_between(xvals, 0, X[0, :], where=(X[0, :] > 0), color=pos_fill, alpha=ax.alpha)
+        ax.fill_between(xvals, 0, X[0, :], where=(X[0, :] < 0), color=neg_fill, alpha=ax.alpha)
         ax.ticklabel_format(style='sci', axis='y', scilimits=(0,0))
         
     ax.set_title(title, color=ax.titlecolor)
@@ -546,7 +581,8 @@ def plotFreqVectors(ax, volume, xvals, interval, coordinates, title, flag, plotP
         if scaleFactor != 0:
             volume /= scaleFactor
         
-        return ax.pcolormesh(xvals, interval, volume, vmin=-1, vmax=1, cmap=ax.customcmap)
+        wiggle_cmap = get_cmap_colors(plotParams['wiggle_colormap'], plotParams['view_mode'])
+        return ax.pcolormesh(xvals, interval, volume, vmin=-1, vmax=1, cmap=wiggle_cmap)
                         
     else: # N == 1
         ax.yaxis.get_offset_text().set_x(-0.1)
@@ -774,10 +810,10 @@ def image_viewer(ax, volume, method, alpha, atol, btol, plotParams, X, Y, Z=None
     #    title = 'Method: SVD\n'
     
     if Z is None:
-        colormap = plt.get_cmap(plotParams['colormap'])
+        image_colormap = plt.get_cmap(plotParams['image_colormap'])
         volume[volume > plotParams['vmax']] = plotParams['vmin']
         im = ax.pcolormesh(X, Y, volume, vmin=plotParams['vmin'], vmax=plotParams['vmax'],
-                           cmap=colormap, shading=plotParams['shading'])
+                           cmap=image_colormap, shading=plotParams['shading'])
         if plotParams['colorbar']:
             divider = make_axes_locatable(ax)
             cax = divider.append_axes('right', size='5%', pad=0.05)
