@@ -44,6 +44,11 @@ def cli():
     parser.add_argument('--method', '-m', type=str, default='lsmr', choices=['lsmr', 'lsqr', 'svd'],
                         help='''Specify the method for solving the linear system of equations:
                         iterative least-squares (lsmr/lsqr) or singular-value decomposition (svd).''')
+    parser.add_argument('--fly', '-f', action='store_true',
+                        help='''Solve on the fly. Default behavior is to load full array 'B' of right-hand side
+                        vectors for bulk processing before solution of a linear systems Ax=b, where each vector
+                        'b' is a column of 'B'. This defualt behavior can be slow for large arrays B. Solving on
+                        the flly pulls and processes a single vector 'b' at a time for rapid compute.''')
     parser.add_argument('--nproc', type=int,
                         help='''Specify the number of processors to parallelize over. Default is serial
                         (i.e., one processor). nproc=-1 uses all available processors. nproc=-2 uses all
@@ -128,22 +133,34 @@ def cli():
         nproc = 1
         
     #==========================================================================
-    # load data, impulseResponses
     # determine whether to solve near-field equation or Lippmann-Schwinger equation
-    #==========================================================================
-    data = load_data(args.domain, taper=True, verbose=True)
-    impulseResponses = load_impulse_responses(args.domain, args.medium)
-        
+    # load data, impulseResponses
+    #==========================================================================      
     if args.nfe:
         # Solve using the linear sampling method
+        
+        # data form the kernel of the linear operator A
+        data = load_data(args.domain, taper=True, verbose=True, skip_fft=False)
+        
+        # impulse responses are the right-hand side vectors b
+        impulseResponses = load_impulse_responses(args.domain, args.medium, skip_fft=args.fly)
+        
         if args.ngs:
             print('Normalizing impulse responses by their energy...')
             for k in range(impulseResponses.shape[2]):
                 impulseResponses[:, :, k] /= norm(impulseResponses[:, :, k])
+        
         p = LinearSamplingProblem(operatorName='nfo', kernel=data, rhs_vectors=impulseResponses)
     
     elif args.lse:
-        # Solve using the mimetic sampling method
+        # Solve using Lippmann-Schwinger inversion
+        
+        # data are the right-hand side vectors b
+        data = load_data(args.domain, taper=True, verbose=True, skip_fft=args.fly)
+        
+        # impulse responses form the kernel of the linear operator A
+        impulseResponses = load_impulse_responses(args.domain, args.medium, skip_fft=False)
+        
         if args.domain == 'time':
             # This is particular to solving the Lippmann-Schwinger equation in the time domain
             # Pad data in the time domain to length 2*Nt-1 (length of circular convolution)
@@ -168,6 +185,10 @@ def cli():
             if answer == '' or answer == 'nfe':
                 args.nfe = True
                 print('Solving the near-field equation...')
+                # data form the kernel of the linear operator A
+                data = load_data(args.domain, taper=True, verbose=True, skip_fft=False)
+                # impulse responses are the right-hand side vectors b
+                impulseResponses = load_impulse_responses(args.domain, args.medium, skip_fft=args.fly)
                 if args.ngs:
                     print('Normalizing impulse responses by their energy...')
                     for k in range(impulseResponses.shape[2]):
@@ -179,6 +200,10 @@ def cli():
             elif answer == 'lse':
                 args.lse = True
                 print('Solving the Lippmann-Schwinger equation...')
+                # data are the right-hand side vectors b
+                data = load_data(args.domain, taper=True, verbose=True, skip_fft=args.fly)
+                # impulse responses form the kernel of the linear operator A
+                impulseResponses = load_impulse_responses(args.domain, args.medium, skip_fft=False)
                 if args.domain == 'time':
                     # This is particular to solving the Lippmann-Schwinger equation in the time domain
                     # Pad data in the time domain to length 2*Nt-1 (length of circular convolution)
@@ -208,7 +233,7 @@ def cli():
     elif args.lse:
         extension = 'LSE.npz'
         
-    X = p.solve(args.method, nproc, alpha, atol, btol, args.numVals)
+    X = p.solve(args.method, args.fly, nproc, alpha, atol, btol, args.numVals)
     Image = p.construct_image(X)
         
     np.savez('solution'+extension, X=X, alpha=alpha, domain=args.domain)

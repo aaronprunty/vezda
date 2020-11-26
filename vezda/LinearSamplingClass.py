@@ -38,7 +38,7 @@ class LinearSystem(object):
         self.B = rhs_vectors
         
         
-    def solve_lsmr(self, damp=0.0, atol=1.0e-8, btol=1.0e-8, nproc=1):
+    def solve_lsmr(self, damp=0.0, atol=1.0e-8, btol=1.0e-8, nproc=1, fft=False):
         M, N = self.A.shape
         K = self.B.shape[2]
         
@@ -154,7 +154,7 @@ class LinearSamplingProblem(LinearSystem):
         self.kernel = kernel
         
         
-    def solve(self, method, nproc=1, alpha=0.0, atol=1.0e-8, btol=1.0e-8, k=None):
+    def solve(self, method, fly=True, nproc=1, alpha=0.0, atol=1.0e-8, btol=1.0e-8, k=None):
         '''
         method : specified direct or iterative method for solving Ax = b
         alpha : regularization parameter
@@ -165,11 +165,11 @@ class LinearSamplingProblem(LinearSystem):
         #======================================================================
         if method == 'lsmr':
             print('Localizing targets...')
-            return super().solve_lsmr(alpha, atol, btol, nproc)
+            return super().solve_lsmr(alpha, atol, btol, nproc, fly)
         
         elif method == 'lsqr':
             print('Localizing targets...')
-            return super().solve_lsqr(alpha, atol, btol, nproc)
+            return super().solve_lsqr(alpha, atol, btol, nproc, fly)
         
         elif method == 'svd':
             # Load or recompute the SVD of A as needed
@@ -190,7 +190,7 @@ class LinearSamplingProblem(LinearSystem):
                 U, s, Vh = compute_svd(self.kernel, k, self.operatorName)
             
             print('Localizing targets...')
-            return super().solve_svd(U, s, Vh, alpha, nproc)
+            return super().solve_svd(U, s, Vh, alpha, nproc, fly)
             
     
     def construct_image(self, solutions):

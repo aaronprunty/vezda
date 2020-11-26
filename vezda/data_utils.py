@@ -33,7 +33,7 @@ if Path('plotParams.pkl').exists():
 else:
     plotParams = default_params()
 
-def load_data(domain, taper=False, verbose=False):
+def load_data(domain, taper=False, verbose=False, skip_fft=False):
     # load the recorded data    
     print('Loading recorded waveforms...')
     if Path('noisyData.npz').exists():
@@ -99,17 +99,17 @@ def load_data(domain, taper=False, verbose=False):
     
     if taper:
         # Apply tapered cosine (Tukey) window to time signals.
-        # This ensures that any fast fourier transforms (FFTs) used
+        # This ensures that any fast Fourier transforms (FFTs) used
         # will be acting on a function that is continuous at its edges.
         data = tukey_taper(data, tstep * dt, pulseFun.peakFreq)
     
-    if domain == 'freq':
+    if domain == 'freq' and not skip_fft:
         print('Transforming data to the frequency domain...')
         data = fft_and_window(data, tstep * dt, double_length=True)
         
     return data
 
-def load_impulse_responses(domain, medium, verbose=False, return_search_points=False):
+def load_impulse_responses(domain, medium, verbose=False, return_search_points=False, skip_fft=False):
     # load user-specified windows
     rinterval, tinterval, tstep, dt = get_user_windows(verbose, skip_sources=True)
     
@@ -222,7 +222,7 @@ def load_impulse_responses(domain, medium, verbose=False, return_search_points=F
                      peakFreq=peakFreq, peakTime=peakTime, velocity=velocity,
                      searchPoints=searchPoints, tau=tau)
         
-    if domain == 'freq':
+    if domain == 'freq' and not skip_fft:
         print('Transforming impulse responses to the frequency domain...')
         impulseResponses = fft_and_window(impulseResponses, tstep * dt, double_length=False)
     
